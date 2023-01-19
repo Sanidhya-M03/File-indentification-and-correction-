@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+#mebb2189=roll no.
+if [[ ! -a $1 ]]
+then
+        echo "INPUT STREAM NOT SPECIFIED OR INVALID FILE ENTERED"
+        exit
+fi
+file $1 > sample1.txt
+echo $1 > sample2.txt
+n=`cat sample2.txt | cut -c 35-39`
+b="shell"
+if b=`cat sample1.txt | egrep "shell"`
+then
+        echo "the correct name is : $n.sh"
+elif b=`cat sample1.txt | egrep "PNG"`
+then
+        echo "the correct name is : $n.png"
+elif b=`cat sample1.txt | egrep "JPEG"`
+then
+        echo "the correct name is : $n.jpg"
+elif b=`cat sample1.txt | egrep "ELF"`
+then
+        echo "the correct name is : $n.exe"
+elif b=`cat sample1.txt | egrep "CSV"`
+then
+        echo "the correct name is : $n.csv"
+elif b=`cat sample1.txt | egrep "GIMP"`
+then
+        echo "the correct name is : $n.xcf"
+fi
+cp /dev/null sample1.txt
+cp /dev/null sample2.txt
